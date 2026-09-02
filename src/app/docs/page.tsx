@@ -189,33 +189,87 @@ export default function Docs() {
           <H id="installation">Installation</H>
           <H3>Option 1 — Install script (recommended)</H3>
           <P>
-            Auto-detects your platform (Linux and macOS, x86_64 and aarch64), downloads the
-            binary, and adds it to your PATH:
+            Auto-detects your platform, downloads the binary, and adds it to your PATH.
+            Supported platforms: <strong>Linux and macOS</strong> on x86_64 and aarch64.
+            Windows users: use Option 2 below.
           </P>
           <Listing>{installScript}</Listing>
-          <P>
-            To install a specific version, append the version tag:
-          </P>
+          <P>To install a specific version, append the version tag:</P>
           <Listing>{installVersion}</Listing>
+          <div className="border border-[var(--rule)] rounded overflow-hidden my-5">
+            <table className="w-full text-[14px]">
+              <thead>
+                <tr className="bg-[var(--box)] border-b border-[var(--rule)]">
+                  <th className="px-4 py-2 text-left font-semibold">Flag</th>
+                  <th className="px-4 py-2 text-left font-semibold">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="px-4 py-2 font-mono text-[13px] whitespace-nowrap">--bin-dir &lt;path&gt;</td>
+                  <td className="px-4 py-2 text-[var(--muted-ink)]">Override the install directory</td>
+                </tr>
+                <tr className="bg-[var(--box)]">
+                  <td className="px-4 py-2 font-mono text-[13px] whitespace-nowrap">--no-modify-path</td>
+                  <td className="px-4 py-2 text-[var(--muted-ink)]">Do not modify shell config</td>
+                </tr>
+                <tr>
+                  <td className="px-4 py-2 font-mono text-[13px] whitespace-nowrap">&lt;version&gt;</td>
+                  <td className="px-4 py-2 text-[var(--muted-ink)]">Install a specific version (e.g. v0.3.0)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <H3>Option 2 — Download prebuilt binary manually</H3>
           <P>
-            Flags: <C>--bin-dir &lt;path&gt;</C> overrides the install directory,{" "}
-            <C>--no-modify-path</C> leaves your shell config alone. Windows users: download{" "}
-            <C>varn-windows-x86_64.exe</C> from the{" "}
-            <A href="https://github.com/flawme/varn/releases">releases page</A> and place it
-            in a directory on your <C>PATH</C>.
+            Prebuilt binaries are available on the{" "}
+            <A href="https://github.com/flawme/varn/releases">releases page</A>.
           </P>
-          <H3>Option 2 — Cargo</H3>
+          <P><strong>Linux (x86_64)</strong></P>
+          <Listing>{`curl -L https://github.com/flawme/varn/releases/latest/download/varn-linux-x86_64 -o ~/.local/bin/varn
+chmod +x ~/.local/bin/varn`}</Listing>
+          <P>
+            If <C>~/.local/bin</C> is not on your PATH:
+          </P>
+          <Listing>{`echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc`}</Listing>
+          <P><strong>macOS (x86_64)</strong></P>
+          <Listing>{`curl -L https://github.com/flawme/varn/releases/latest/download/varn-macos-x86_64 -o /usr/local/bin/varn
+chmod +x /usr/local/bin/varn`}</Listing>
+          <P>
+            On a permission-denied error, use <C>sudo</C> or install to{" "}
+            <C>~/.local/bin</C> instead.
+          </P>
+          <P><strong>Windows (x86_64)</strong></P>
+          <Listing>{`curl -L https://github.com/flawme/varn/releases/latest/download/varn-windows-x86_64.exe -o "$env:USERPROFILE\\.cargo\\bin\\varn.exe"`}</Listing>
+          <P>
+            Or download the file directly from the{" "}
+            <A href="https://github.com/flawme/varn/releases">releases page</A> and place
+            it in a directory on your <C>PATH</C>.
+          </P>
+
+          <H3>Option 3 — Cargo</H3>
           <P>
             Requires Rust 1.85+. Builds from source and installs to{" "}
             <C>~/.cargo/bin/</C>:
           </P>
           <Listing>{installCargo}</Listing>
-          <H3>Option 3 — Build from source</H3>
+          <H3>Option 4 — Build from source</H3>
           <Listing>{installSource}</Listing>
           <P>
-            The binary is at <C>target/release/varn</C>. Verify any install with{" "}
-            <C>varn --help</C>.
+            The binary is at <C>target/release/varn</C>.
           </P>
+          <P><strong>Add to PATH — Linux / macOS:</strong></P>
+          <Listing>{`mkdir -p ~/.local/bin
+cp target/release/varn ~/.local/bin/
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc`}</Listing>
+          <P><strong>Add to PATH — Windows (PowerShell):</strong></P>
+          <Listing>{`Copy-Item target\\release\\varn.exe "$env:USERPROFILE\\.cargo\\bin\\"`}</Listing>
+          <H3>Verify installation</H3>
+          <Listing>{`varn --version
+# varn 0.3.0`}</Listing>
 
           {/* Quick start */}
           <H id="quick-start">Quick start</H>

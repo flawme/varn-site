@@ -113,6 +113,26 @@ export default function Home() {
               read the docs
             </Link>
           </p>
+          <p className="mt-2 text-[13px] text-[var(--muted-ink)]">
+            The install script covers Linux and macOS. On Windows, grab the binary from
+            the{" "}
+            <a
+              href="https://github.com/flawme/varn/releases"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[var(--accent)] underline underline-offset-4 decoration-[var(--rule)] hover:decoration-[var(--accent)]"
+            >
+              releases page
+            </a>{" "}
+            or use <code className="font-mono text-[12px]">cargo install</code> — see{" "}
+            <Link
+              href="/docs#installation"
+              className="text-[var(--accent)] underline underline-offset-4 decoration-[var(--rule)] hover:decoration-[var(--accent)]"
+            >
+              installation
+            </Link>
+            .
+          </p>
         </section>
 
         {/* What's new */}
