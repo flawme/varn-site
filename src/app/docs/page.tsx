@@ -34,9 +34,9 @@ const nav: Array<{ group: string; items: Array<[string, string]> }> = [
 ];
 
 const installScript =
-  "curl -fsSL https://raw.githubusercontent.com/flawme/varn/main/install.sh | sh";
+  "curl -fsSL https://raw.githubusercontent.com/flawme/varn/master/install.sh | sh";
 const installVersion =
-  "curl -fsSL https://raw.githubusercontent.com/flawme/varn/main/install.sh | sh -s -- v0.3.0";
+  "curl -fsSL https://raw.githubusercontent.com/flawme/varn/master/install.sh | sh -s -- v0.3.0";
 const installCargo = "cargo install --git https://github.com/flawme/varn.git";
 const installSource = `git clone https://github.com/flawme/varn.git
 cd varn

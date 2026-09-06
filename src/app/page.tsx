@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Listing } from "@/components/listing";
 
 const installCmd =
-  "curl -fsSL https://raw.githubusercontent.com/flawme/varn/main/install.sh | sh";
+  "curl -fsSL https://raw.githubusercontent.com/flawme/varn/master/install.sh | sh";
 
 const quickStart = `varn init
 varn checkpoint "before changes"
@@ -307,12 +307,12 @@ export default function Home() {
             <li>
               Install script.{" "}
               <a
-                href="https://raw.githubusercontent.com/flawme/varn/main/install.sh"
+                href="https://raw.githubusercontent.com/flawme/varn/master/install.sh"
                 target="_blank"
                 rel="noreferrer"
                 className="underline underline-offset-2 hover:text-[var(--ink)]"
               >
-                raw.githubusercontent.com/flawme/varn/main/install.sh
+                raw.githubusercontent.com/flawme/varn/master/install.sh
               </a>
             </li>
           </ol>
